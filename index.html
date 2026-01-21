@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACCH</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <style>
+    @font-face {
+      font-family: 'Basement Grotesque';
+      src: url('fonts/BasementGrotesque-RegularExpanded.woff2') format('woff2'),
+           url('fonts/BasementGrotesque-RegularExpanded.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Basement Grotesque';
+      src: url('fonts/BasementGrotesque-BoldExpanded.woff2') format('woff2'),
+           url('fonts/BasementGrotesque-BoldExpanded.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #e5e5e5;
+      line-height: 1.5;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 1.5rem;
+    }
+
+    .video-wrapper {
+      width: 300px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .title {
+      margin: 1.5rem 0 0;
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-family: 'Basement Grotesque', sans-serif;
+    }
+
+    .subtitle {
+      margin: 0.25rem 0 0;
+      font-size: 0.95rem;
+      color: #aaa;
+      font-weight: 400;
+      font-family: 'Basement Grotesque', sans-serif;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .hero-links a {
+      font-size: 0.9rem;
+      color: #ff8800;
+      text-decoration: none;
+    }
+
+    .hero-links a:hover {
+      text-decoration: underline;
+    }
+
+    .team-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    .team-section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 1.5rem;
+      color: #e5e5e5;
+      font-family: 'Basement Grotesque', sans-serif;
+    }
+
+    .member-grid {
+      display: grid;
+      gap: 0;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #151515;
+    }
+
+    .member-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0;
+      min-height: 140px;
+      border-bottom: 1px solid #2a2a2a;
+      background: #1a1a1a;
+    }
+
+    .member-row:last-child {
+      border-bottom: none;
+    }
+
+    .member-avatar {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1f1f1f;
+    }
+
+    .member-avatar img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .member-info {
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .member-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 0.35rem;
+      font-family: 'Basement Grotesque', sans-serif;
+    }
+
+    .member-desc {
+      font-size: 0.9rem;
+      color: #bbb;
+      margin: 0 0 0.5rem;
+    }
+
+    .member-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .member-links a {
+      font-size: 0.85rem;
+      color: #ff8800;
+      text-decoration: none;
+    }
+
+    .member-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 540px) {
+      .member-row {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .member-avatar {
+        padding-top: 1.25rem;
+      }
+
+      .member-info {
+        align-items: center;
+        text-align: center;
+      }
+
+      .member-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline>
+        <source src="videos/profounder_com_74615b6587ef46f5f7727bc0e98e9196-86e1c75e9a961867beed-webm_transparent.webm" type="video/webm">
+      </video>
+    </div>
+    <h1 class="title">ACCH</h1>
+    <p class="subtitle">Associação dos Cachorros Caramelos Hackers</p>
+    <div class="hero-links">
+      <a href="https://app.hackthebox.com/teams/5868">HackTheBox</a>
+      <a href="https://ctftime.org/team/418617">CTFtime</a>
+      <a href="https://root-acch.gitbook.io/hedgenotes">HedgeNotes</a>
+    </div>
+  </header>
+
+  <section class="team-section">
+    <h2>Team</h2>
+    <div class="member-grid">
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member1.png" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">58mw (aka Lain)</div>
+          <div class="member-desc"> ኃጢአተኛ ነፍስህ ከድነት በላይ ነው እናም ሰላምን እና ህመምንም አታውቅም ፣ ብቸኛው የባዶነት ቅዝቃዜ ብቻ ነው የንስሐ ጊዜ ተጠናቅቋል ፣ ምክንያቱም ጥፋቶችህ በክፉ ዓይነትህ ከማንኛውም ተልእኮ ይበልጣሉ መጨረሻው</div>
+          <div class="member-links">
+            <a href="https://github.com/Notlainn">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member2.png" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">breninja</div>
+          <div class="member-desc">greninja big fan & author @ hedgenotes</div>
+          <div class="member-links">
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member3.png" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">celesian</div>
+          <div class="member-desc">viril, sangue italiano, inseminação caseira, 13cm</div>
+          <div class="member-links">
+            <a href="https://celes.in/">Blog</a>
+            <a href="https://github.com/c3l3si4n">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member4.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">EK1L</div>
+          <div class="member-desc">networking with succulent plants</div>
+          <div class="member-links">
+            <a href="https://blogek1l.vercel.app/">Blog</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member5.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">f69</div>
+          <div class="member-desc">imagine hating me and i'm just in my room like this</div>
+          <div class="member-links">
+            <a href="https://f69.gitbook.io/">Blog</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member6.png" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">FabrizioBridi</div>
+          <div class="member-desc">i <3 web hacking</div>
+          <div class="member-links">
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member7.webp" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">jmpman</div>
+          <div class="member-desc">ronaldo vibe ctfer</div>
+          <div class="member-links">
+            <a href="https://linktr.ee/jmpman">Links</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member8.jpeg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">jpg</div>
+          <div class="member-desc">%5Cn represents a newline character soc forever < 3</div>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/jpgjpg/">LinkedIn</a>
+            <a href="https://linktr.ee/jpgjpg">Links</a>
+            <a href="https://github.com/jpgjpgjpgjpg">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member9.png" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">l0uh4n</div>
+          <div class="member-desc">to solteiro, hehehe</div>
+          <div class="member-links">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member10.png" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">lipe</div>
+          <div class="member-desc">blue team master 2 & author @ hedgenotes</div>
+          <div class="member-links">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member11.png" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">lurgalurga</div>
+          <div class="member-desc">blue team master 1 & author @ hedgenotes</div>
+          <div class="member-links">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member12.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">mHiIuxS</div>
+          <div class="member-desc">cat ~/Pictures/cat.jpg</div>
+          <div class="member-links">
+            <a href="https://www.mhsferreira.com/">Blog</a>
+            <a href="https://www.linkedin.com/in/matheushferreira/">LinkedIn</a>
+            <a href="https://github.com/mhijuxs">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member13.png" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">ownouwa</div>
+          <div class="member-desc">rh @ acch.dog</div>
+          <div class="member-links">
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member14.jpeg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">ribeirin</div>
+          <div class="member-desc"> Hey guys, my name is Pedro, I'm 20 years old, I'm from Formiga, but I took prep courses in Belo Horizonte and at Bernoulli. I'm single, I drink, I don't smoke, and if I have sex? Find out, haha, who doesn't like a little oral sex, haha, of course. And I'm a very... very sincere and very easygoing person, I don't really like drama. I haven't really looked at the older girls yet, but I've already seen there are a lot of hot girls there. I'm going to be a very respectable freshman and I'll always keep your drinks full.</div>
+          <div class="member-links">
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member15.png" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">shiraax</div>
+          <div class="member-desc">ceo and (one of the) founders of acch</div>
+          <div class="member-links">
+            <a href="#">Blog</a>
+            <a href="#">Twitter</a>
+            <a href="#">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member16.png" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">smarttfoxx</div>
+          <div class="member-desc">Security Researcher and Systems Engineer specialized in Windows Internals, Malware
+            Analysis, and Kernel-level Development. Proven expertise in reverse engineering
+            complex binaries, analyzing obfuscated code, and developing detection logic. Passionate
+            about researching novel evasion techniques and contributing to the global security
+            community. 6 CVEs found.</div>
+          <div class="member-links">
+            <a href="https://medium.com/@ivancmoliveira">Medium</a>
+            <a href="https://github.com/Smarttfoxx">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member17.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">texuguinho123</div>
+          <div class="member-desc">Com suas patas ágeis e corpo robusto, o texugo pode atingir impressionantes 30 km/h, percorrendo o solo com destreza enquanto busca alimento ou foge de predadores.</div>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/gabrielrodrigueoliveira/">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member18.png" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">thifx</div>
+          <div class="member-desc">pai cade meu pinto pai</div>
+          <div class="member-links">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="member-row">
+        <div class="member-avatar">
+          <img src="images/member19.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%232a2a2a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23aaa%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="member-info">
+          <div class="member-name">V01demort</div>
+          <div class="member-desc"> ▌│║▌║▌█║EndlssNightmare│║▌║▌│║║▌</div>
+          <div class="member-links">
+            <a href="https://endlssightmare.com/">Blog</a>
+            <a href="https://app.hackthebox.com/profile/782262">HackTheBox</a>
+            <a href="https://github.com/EndlssNightmare">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
